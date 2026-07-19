@@ -1,7 +1,7 @@
 {
   "name": "claude-usage-widget",
   "productName": "Claude Usage",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Floating always-on-top widget showing Claude usage limits (Windows/macOS)",
   "main": "main.js",
   "author": "Afnan",
@@ -31,7 +31,10 @@
       "assets/**"
     ],
     "win": {
-      "target": ["portable", "nsis"],
+      "target": [
+        "portable",
+        "nsis"
+      ],
       "icon": "assets/icon.png",
       "signAndEditExecutable": false
     },
@@ -43,8 +46,18 @@
     },
     "mac": {
       "target": [
-        { "target": "dmg", "arch": ["universal"] },
-        { "target": "zip", "arch": ["universal"] }
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        }
       ],
       "icon": "assets/icon.png",
       "category": "public.app-category.utilities",

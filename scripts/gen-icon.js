@@ -71,5 +71,5 @@ const outDir = path.join(__dirname, "..", "assets");
 fs.mkdirSync(outDir, { recursive: true });
 // Claude coral #D97757
 fs.writeFileSync(path.join(outDir, "tray.png"), encodePNG(32, drawCircle(32, 0xd9, 0x77, 0x57)));
-fs.writeFileSync(path.join(outDir, "icon.png"), encodePNG(256, drawCircle(256, 0xd9, 0x77, 0x57)));
+fs.writeFileSync(path.join(outDir, "icon.png"), encodePNG(1024, drawCircle(1024, 0xd9, 0x77, 0x57)));
 console.log("icons written to", outDir);
