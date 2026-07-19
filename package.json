@@ -1,0 +1,54 @@
+{
+  "name": "claude-usage-widget",
+  "productName": "Claude Usage",
+  "version": "0.2.0",
+  "description": "Floating always-on-top widget showing Claude usage limits (Windows/macOS)",
+  "main": "main.js",
+  "author": "Afnan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smafnan/claude-usage-widget.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "icons": "node scripts/gen-icon.js",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "dev.afnan.claude-usage-widget",
+    "productName": "Claude Usage",
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**",
+      "renderer/**",
+      "assets/**"
+    ],
+    "win": {
+      "target": ["portable", "nsis"],
+      "icon": "assets/icon.png",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "artifactName": "Claude-Usage-Setup-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "Claude-Usage-Portable-${version}.exe"
+    },
+    "mac": {
+      "target": [
+        { "target": "dmg", "arch": ["universal"] },
+        { "target": "zip", "arch": ["universal"] }
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.utilities",
+      "artifactName": "Claude-Usage-${version}-mac.${ext}"
+    }
+  }
+}

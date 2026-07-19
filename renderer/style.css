@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  background: transparent;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  color: #e8e6e3;
+}
+
+#card {
+  margin: 6px;
+  background: rgba(22, 22, 27, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 13px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  -webkit-app-region: drag; /* whole card is draggable */
+  transition: opacity 0.15s ease;
+  opacity: 0.94;
+}
+
+#card:hover {
+  opacity: 1;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 6px;
+}
+
+#brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+#dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d97757;
+  flex: none;
+}
+
+#title {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+#plan {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #a09a92;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 1px 7px;
+}
+
+#plan:empty {
+  display: none;
+}
+
+#controls {
+  display: flex;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+#controls button {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: #8f8a83;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#controls button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8e6e3;
+}
+
+/* collapse chevron drawn in CSS so it flips when collapsed */
+#btn-collapse::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-left: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(45deg) translate(1px, 1px);
+}
+
+#card.collapsed #btn-collapse::before {
+  transform: rotate(225deg) translate(1px, 1px);
+}
+
+#body {
+  padding: 2px 12px 9px;
+}
+
+#card.collapsed #body {
+  display: none;
+}
+
+.row {
+  padding: 5px 0 2px;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.row-label {
+  color: #cfcac3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-pct {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  margin-top: 4px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.row-reset {
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: #8f8a83;
+}
+
+/* severity colors */
+.sev-normal .bar-fill { background: #4e9e79; }
+.sev-normal .row-pct { color: #7fc9a4; }
+.sev-warning .bar-fill { background: #dfa03c; }
+.sev-warning .row-pct { color: #ecc27c; }
+.sev-exceeded .bar-fill,
+.sev-critical .bar-fill { background: #d65745; }
+.sev-exceeded .row-pct,
+.sev-critical .row-pct { color: #ef8f80; }
+
+#message {
+  padding: 8px 0;
+  color: #d9a26a;
+  line-height: 1.45;
+}
+
+#login {
+  padding: 2px 0 6px;
+  -webkit-app-region: no-drag;
+}
+
+#login button {
+  width: 100%;
+  padding: 7px 0;
+  border: none;
+  border-radius: 8px;
+  background: #d97757;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+#login button:hover {
+  background: #e0876a;
+}
+
+#login button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+#login-step2 {
+  margin-top: 7px;
+}
+
+#login-code {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #e8e6e3;
+  font-size: 12px;
+  outline: none;
+  user-select: text;
+}
+
+#login-code:focus {
+  border-color: #d97757;
+}
+
+#login-status {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #8f8a83;
+  line-height: 1.4;
+}
+
+#login-status.error {
+  color: #ef8f80;
+}
+
+#footer {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  color: #6f6a64;
+}
+
+/* collapsed summary pill */
+#summary {
+  display: none;
+  padding: 0 12px 9px;
+  font-variant-numeric: tabular-nums;
+  color: #cfcac3;
+}
+
+#card.collapsed #summary {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#summary .mini {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#summary .mini-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+#summary .mini-dot.sev-normal { background: #4e9e79; }
+#summary .mini-dot.sev-warning { background: #dfa03c; }
+#summary .mini-dot.sev-exceeded,
+#summary .mini-dot.sev-critical { background: #d65745; }

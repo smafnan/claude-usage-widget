@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Claude Usage</title>
+</head>
+<body>
+  <div id="card">
+    <div id="header">
+      <div id="brand">
+        <span id="dot"></span>
+        <span id="title">Claude usage</span>
+        <span id="plan"></span>
+      </div>
+      <div id="controls">
+        <button id="btn-refresh" title="Refresh now">&#x21bb;</button>
+        <button id="btn-collapse" title="Collapse"></button>
+        <button id="btn-hide" title="Hide (reopen from tray)">&#x2715;</button>
+      </div>
+    </div>
+    <div id="body">
+      <div id="rows"></div>
+      <div id="message" hidden></div>
+      <div id="login" hidden>
+        <button id="btn-login">Sign in with Claude</button>
+        <div id="login-step2" hidden>
+          <input id="login-code" type="text" spellcheck="false"
+                 placeholder="Paste the code from your browser" />
+          <button id="btn-login-submit">Complete sign-in</button>
+        </div>
+        <div id="login-status"></div>
+      </div>
+      <div id="footer">
+        <span id="updated"></span>
+      </div>
+    </div>
+    <div id="summary" hidden></div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
